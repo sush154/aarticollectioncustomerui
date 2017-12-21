@@ -1,0 +1,62 @@
+<nav class="navbar navbar-expand-lg navUser">
+    <div class="collapse navbar-collapse">
+        <ul class="navUser-section navUser-section--alt" style="margin-right: 20%;">
+            <li class="navUser-item navUser-item--social">
+                <ul class="socialLinks socialLinks--alt">
+                    <li class="socialLinks-item">
+                        <a class="icon icon--twitter">
+                            <i class="fa fa-twitter fa-2x"></i>
+                        </a>
+                    </li>
+                    <li class="socialLinks-item">
+                        <a class="icon icon--twitter">
+                            <i class="fa fa-facebook-official fa-2x"></i>
+                        </a>
+                    </li>
+                    <li class="socialLinks-item">
+                        <a class="icon icon--twitter">
+                            <i class="fa fa-instagram fa-2x"></i>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            <li class="navUser-item navUser-item--divider">|</li>
+            <li class="navUser-item navUser-item--account">
+                <a class="navUser-action">Sign In</a>
+                <span class="navUser-or">or</span>
+                <a class="navUser-action">Register</a>
+            </li>
+        </ul>
+    </div>
+
+    <h1 class="text-center header-logo">
+        <a>
+            <span class="header-logo-text">Aarti's Collections</span>
+        </a>
+    </h1>
+
+    <div class="navPages-container">
+        <nav class="navPages">
+            <ul class="navPages-list">
+                <li class="navPages-item">
+                    <a class="navPages-action" (click)="isOpen('')">All</a>
+                </li>
+                <li class="navPages-item" *ngFor="let parentCategory of parentCategoryList" (mouseleave)="isOpen('')">
+                    <a class="navPages-action has-submenu" (mouseover)="isOpen(parentCategory.value)"  [class.is-open]="selectedTab === parentCategory.value">
+                        {{parentCategory.value}}
+                        <i class="fa fa-caret-down m-l-5px" aria-hidden="true"></i>
+                    </a>
+                    <div class="navPage-subMenu" [class.is-open]="selectedTab === parentCategory.value">
+                        <ul class="navPage-subMenu-list">
+                            <li class="navPage-subMenu-item" *ngFor="let category of categoriesList[parentCategory.id]">
+                                <a class="navPages-action">{{category.categoryName}}</a>
+                            </li>
+                            
+                        </ul>
+                    </div>
+                </li>
+                
+            </ul>
+        </nav>
+    </div>
+</nav>
