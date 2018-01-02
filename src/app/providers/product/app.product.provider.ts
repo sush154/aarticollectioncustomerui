@@ -6,13 +6,13 @@ import 'rxjs/add/operator/toPromise';
 
 @Injectable()
 
-export class CategoryProvider {
+export class ProductProvider {
 
     constructor(private http : Http){}
 
     private headers = new Headers({'Content-Type': 'application/json'});
 
-    private serviceUrl = URL + '/category';
+    private serviceUrl = URL + '/product';
 
     private handleError(error: any): Promise<any> {
         console.error('An error occurred', error); // for demo purposes only
@@ -20,10 +20,10 @@ export class CategoryProvider {
     }
 
     /**
-     * This method retrieves list of categories
+     * This method populates popular Products
      */
-    getAllCategories() : Promise<any> {
-        let url = this.serviceUrl + '/getAllCategories';
+    getPopularProducts() : Promise<any> {
+        let url = this.serviceUrl + '/getPopularProducts';
 
         return this.http
             .get(url, {headers : this.headers, withCredentials : true})
@@ -37,10 +37,10 @@ export class CategoryProvider {
     }
 
     /**
-     * This method retrieves parent category list
+     * This method populates new products
      */
-    getAllParentCategories() : Promise<any> {
-        let url = this.serviceUrl + '/getAllParentCategories';
+    getNewProducts() : Promise<any> {
+        let url = this.serviceUrl + '/getNewProducts';
 
         return this.http
             .get(url, {headers : this.headers, withCredentials : true})
@@ -50,6 +50,6 @@ export class CategoryProvider {
             })
             .catch(err => {
                 this.handleError(err);
-            });
+            })
     }
 }

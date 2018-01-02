@@ -3,6 +3,8 @@ import {Component, OnInit} from '@angular/core';
 import {CategoryProvider} from '../../providers/category/app.category.provider';
 import {PARENTCATEGORY} from '../../common/app.parent.category';
 
+import { Router } from "@angular/router";
+
 @Component({
     selector : 'app-header',
     templateUrl : 'app.header.component.html',
@@ -16,7 +18,8 @@ export class HeaderComponent implements OnInit{
     private parentCategoryList : any = PARENTCATEGORY;
     private selectedTab : string = '';
 
-    constructor(private categoryProvider : CategoryProvider){}
+    constructor(private categoryProvider : CategoryProvider,
+                private router : Router){}
 
     private getAllCategories() : void {
         this.categoryProvider.getAllCategories().then((res) => {
@@ -43,6 +46,10 @@ export class HeaderComponent implements OnInit{
         }else {
             this.selectedTab = '';
         }
+    }
+
+    private goToProductsList(criteria : any) : void {
+        this.router.navigate(['/products', criteria]);
     }
 
     ngOnInit() : void {
