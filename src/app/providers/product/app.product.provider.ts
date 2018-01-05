@@ -52,4 +52,21 @@ export class ProductProvider {
                 this.handleError(err);
             })
     }
+
+    /*
+    * This method populates products list based on criteria
+    */
+    getProductsListOnCriteria(criteria : any) : Promise<any> {
+      let url = this.serviceUrl + '/getProductsListOnCriteria';
+
+      return this.http
+        .post(url, JSON.stringify(criteria), {headers : this.headers, withCredentials : true})
+        .toPromise()
+        .then(res => {
+          return res.json().data;
+        })
+        .catch(err => {
+          this.handleError(err);
+        })
+    }
 }

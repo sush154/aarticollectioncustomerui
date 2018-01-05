@@ -2,11 +2,13 @@ import { Component, OnInit } from "@angular/core";
 import { DomSanitizer } from '@angular/platform-browser';
 import { ProductProvider } from "../../../providers/product/app.product.provider";
 
+import {CMSURL} from '../../../common/app.service.url';
+
 
 @Component({
     selector : 'popular-products-carousel',
-    templateUrl : 'app.popular.product.carousel.component.html',
-    styleUrls : ['app.popular.product.carousel.component.css', 'resCarousel.css'],
+    templateUrl : './app.popular.product.carousel.component.html',
+    styleUrls : ['./app.popular.product.carousel.component.css'],
     providers : [ProductProvider]
 })
 
@@ -26,6 +28,10 @@ export class PopularProductsCarouselComponent implements OnInit{
                 this.productsList = res.product;
             }
         })
+    }
+
+    private getImageFromCMS(imagePath : any) : String {
+        return CMSURL + "/getImg/"+ imagePath;
     }
 
     ngOnInit() : void {

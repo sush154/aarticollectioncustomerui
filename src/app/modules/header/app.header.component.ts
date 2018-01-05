@@ -35,12 +35,12 @@ export class HeaderComponent implements OnInit{
             }
 
         });
-        
+
     }
 
 
     private isOpen(tab : string) : void {
-        
+
         if(tab !== ''){
             this.selectedTab = tab;
         }else {
@@ -48,8 +48,13 @@ export class HeaderComponent implements OnInit{
         }
     }
 
-    private goToProductsList(criteria : any) : void {
-        this.router.navigate(['/products', criteria]);
+    private goToProductsList(criteriaId : any, criteriaVal : any, categoryType : any) : void {
+        localStorage.setItem('criteria', JSON.stringify({ criteriaId: criteriaId, categoryType: categoryType}));
+        this.router.navigate(['/products', criteriaVal]);
+    }
+
+    private goToHome() : void {
+      this.router.navigate(['/home']);
     }
 
     ngOnInit() : void {

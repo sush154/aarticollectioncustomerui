@@ -38,7 +38,7 @@
     <div class="row">
         <div class="col-lg-12 text-center">
                 <h1 class="text-center header-logo">
-                    <a>
+                    <a (click)="goToHome()">
                         <span class="header-logo-text">Aarti's Collections</span>
                     </a>
                 </h1>
@@ -60,10 +60,10 @@
     <nav class="navPages">
         <ul class="navPages-list">
             <li class="navPages-item">
-                <a class="navPages-action" (click)="isOpen('')">All</a>
+                <a class="navPages-action" (click)="goToProductsList('0', 'All-Products', 'All')">All</a>
             </li>
             <li class="navPages-item" *ngFor="let parentCategory of parentCategoryList" (mouseleave)="isOpen('')">
-                <a class="navPages-action has-submenu" (mouseover)="isOpen(parentCategory.value)"  [class.is-open]="selectedTab === parentCategory.value" (click)="goToProductsList(parentCategory.id)">
+                <a class="navPages-action has-submenu" (mouseover)="isOpen(parentCategory.value)"  [class.is-open]="selectedTab === parentCategory.value" (click)="goToProductsList(parentCategory.id, parentCategory.value, 'parentCategory')">
                     {{parentCategory.value}}
                     <i class="fa fa-caret-down m-l-5px" aria-hidden="true"></i>
                 </a>
@@ -72,11 +72,11 @@
                         <li class="navPage-subMenu-item" *ngFor="let category of categoriesList[parentCategory.id]">
                             <a class="navPages-action">{{category.categoryName}}</a>
                         </li>
-                        
+
                     </ul>
                 </div>
             </li>
-            
+
         </ul>
     </nav>
 </div>

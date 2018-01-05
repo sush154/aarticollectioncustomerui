@@ -4,13 +4,13 @@
 
     <div class="resCarousel" data-items="2-3-4-5" data-slide="1" data-speed="900" data-interval="5000" data-animator="lazy">
         <div class="resCarousel-inner">
-    
+
             <div class="item" *ngFor="let product of productsList">
                 <div class="tile">
                     <!-- <img [src]="sanitizer.bypassSecurityTrustResourceUrl('data:image;base64,' + product.images[0].img.data)" alt="No Image!" class="img-thumbnail">-->
-                    
+
                     <div class="hovereffect">
-                        <img [src]="sanitizer.bypassSecurityTrustResourceUrl('data:image;base64,' + product.images[0].img.data)" alt="No Image!" class="img-thumbnail">
+                        <img [src]="getImageFromCMS(product.images[0])" alt="No Image!" class="img-thumbnail">
                         <div class="overlay">
                             <div>
                                 <a class="info">Quick View</a>
@@ -33,11 +33,11 @@
                         </div>
                     </div>
                 </div>
-                
+
             </div>
-    
+
         </div>
-        
+
         <button class='btn btn-default leftRs'><</button>
         <button class='btn btn-default rightRs'>></button>
     </div>

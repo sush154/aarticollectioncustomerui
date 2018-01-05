@@ -3,6 +3,7 @@ import { CommonModule } from "@angular/common";
 import { HeaderModule } from "../../../modules/header/app.header.module";
 import { RouterModule } from "@angular/router";
 
+
 import { ProductsListComponent } from "./app.products.list.component";
 
 @NgModule({
